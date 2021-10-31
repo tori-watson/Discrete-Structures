@@ -1,0 +1,51 @@
+#include <iostream>
+using namespace std;
+
+int factorial(int f)
+{
+  if(f <= 1)
+    return 1;
+  return f * factorial(f-1);
+}
+
+int nPr(int n, int r)
+{
+  return factorial(n)/factorial(n-r);
+}
+
+int nCr(int n, int r)
+{
+  return factorial(n)/(factorial(r) * factorial(n-r));
+}
+
+int main() {
+  int r, n;
+  char Yes_No = 'Y';
+
+  do 
+  {
+    cout << endl << "Please enter your 'n' and 'r':" << endl;
+    cin >> n >> r;
+    if( n < 0 && r < 0)
+    {
+      cout << "Your values must be positive values. Please try again." << endl;
+      break; 
+    }
+    if(r > n)
+    {
+      cout << "'R' must be greater than 'N'. Please try again." << endl;
+      break;
+    }
+    if ( n == 0 && r == 0)
+    {
+      n = 1; r = 1;
+    }
+     cout << "\nn\t\t\tr\t\t\tnPr\t\t\tnCr" << endl;
+    for(int k = 1; k <= r; k++)
+    {
+      cout << n << "\t\t\t" << k << "\t\t\t" << nPr(n,k) << "\t\t\t" << nCr(n,k) << endl;
+    }
+    cout << endl << "Again? Press Y-yes, N-no " << endl;
+    cin  >> Yes_No;
+  }while (Yes_No == 'Y');
+} 
